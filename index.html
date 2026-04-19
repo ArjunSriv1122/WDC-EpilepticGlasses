@@ -70,16 +70,16 @@
         /* Animate */
         .tabpanel {
             overflow: hidden;
-            max-height: 0;
+            height: 0;
             opacity: 0;
             transform: translateY(8px);
-            transition: max-height .36s cubic-bezier(.2,.9,.2,1), opacity .28s ease, transform .28s cubic-bezier(.2,.9,.2,1);
+            transition: height .8s ease, opacity .6s ease, transform .6s ease;
         }
         .tabpanel.active {
-            max-height: 800px;
+            height: 600px;
             opacity: 1;
             transform: translateY(0);
-            min-height: 600px;
+            overflow-y: auto;
         }
 
         .panel-card {
