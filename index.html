@@ -126,15 +126,15 @@
 <p>
 
 
-Around 1 in 4000 people have photosensitive epilepsy (PSE) according to the Epilepsy Foundation, a condition which is triggered sudden changes in light such as a sudden bright light or strobe effect. 
+Around 1 in 4000 people have photosensitive epilepsy (PSE) according to the Epilepsy Foundation, a condition which is triggered by sudden changes in light, such as a sudden bright light or strobe effect. 
 These sudden changes cause individuals with PSE to start experiencing extreme headaches, nausea, dizziness, and often incapacitating seizures. 
 While there are many available medications, we wanted to create a practical solution that works in conjunction with medications to prevent dangerous triggers. 
 
 <p> </p>
 <p> </p>
-Glasses that filer out specific wavelengths of light, exist, but they not address dynamic, unpredictable changes.
+Glasses that filter out specific wavelengths of light exist, but they do not address dynamic, unpredictable changes.
 Epillux bridges this gap by introducing active, real-time protection. Instead of using static lenses that are unfit for certain indoor environments, our shutter lenses provide a barrier that only activates when a threat is detected. 
-This allows our users to participate in new experiences, without the cumbersome sight-restriction of polarized lenses, or the potential unreliablity of medication.
+This allows our users to participate in new experiences without the cumbersome sight-restriction of polarized lenses or the potential unreliability of medication.
 
 
     
@@ -168,8 +168,8 @@ This allows our users to participate in new experiences, without the cumbersome 
 
 
 
-Coded in C++, our camera is linked to our controller via onboard WIFI provided by our ESP32, the camera feed is formatted and displayed onto a web link, where we create a “mask” by tuning the exposure and brightness extremely low while increasing the contrast. 
-This gives us a black on white mask → the 2 states our program is monitoring. As light changes these pixels that illuminate or dim will change states.
+Coded in C++, our camera is linked to our controller via onboard WIFI provided by our ESP32. The camera feed is formatted and displayed on a web link, where we create a “mask” by tuning the exposure and brightness extremely low while increasing the contrast. 
+This gives us a black on white mask → the 2 states our program is monitoring. As light changes, these pixels that illuminate or dim will change states.
 When the camera detects approximately 2% of its pixels have changed state, the glasses will activate, with a response time of 55 milliseconds.
 
 
@@ -178,14 +178,14 @@ When the camera detects approximately 2% of its pixels have changed state, the g
 <p> </p>
 <p> </p>
 <p> </p>
-The camera is placed center of frame, providing with full vision of what the wearer would see, essentially becoming one’s third eye. 
+The camera is placed at the center of the frame, providing a full vision of what the wearer would see, essentially becoming one’s third eye. 
 We decided to choose a camera over other sensors, such as photodiodes and light sensors, because the camera gave us much more freedom and viability. We previously tested photodiodes and light sensors (BH1750), which all had one main problem: they could not accurately detect changes from afar; an issue that is fixed by the increased visibility of the camera acting as our sensor.
-Additionally, our glasses integrate the features of a normal pair of sunglasses, by dimming automatically in bright environments.
+Additionally, our glasses integrate the features of a normal pair of sunglasses by dimming automatically in bright environments.
 <p> </p>
 <p> </p>
 <p> </p>
 
-In the future, we plan to implement solar panels along our frame that are routed to our rechargable lipo batteries. This would not only serve to greatly extend battery life, but may also serve as the main power source for our glasses if proven to be especially effective.
+In the future, we plan to implement solar panels along our frame that are routed to our rechargeable LiPo batteries. This would not only serve to greatly extend battery life, but may also serve as the main power source for our glasses if proven to be especially effective.
 This is a practical addition to our glasses due to their functionality as sunglasses. The user would ideally be able to store charge for indoor environments while they are using the glasses in bright outdoor settings, creating a self-sustaining cycle of protection. By utilizing thin-film solar cells on the edges of the frame, the device can passively harvest energy during peak daylight. 
 This reduces the need for  manual charging and guarantees that our glasses remain functional in critical times.
 
