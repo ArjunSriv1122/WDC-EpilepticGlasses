@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Epilux</title>
+    <style>
+        /* Reset + base */
+        *, *::before, *::after { box-sizing: border-box; }
+        body, h1, h2, h3, p, ul { margin: 0; padding: 0; }
+
+        :root {
+            --bg: #000000;
+            --fg: #ffffff;
+            --accent: #1a73e8;
+            --tab-bg: rgba(255,255,255,0.04);
+            --tab-active: rgba(255,255,255,0.06);
+            --panel-bg: rgba(255,255,255,0.03);
+            --radius: 10px;
+            --gap: 14px;
+        }
+
+        body {
+            font-family: "Century Gothic", CenturyGothic, AppleGothic, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background-color: var(--bg);
+            color: var(--fg);
+            line-height: 1.45;
+        }
+
+        /* Layout container */
+        .container {
+            max-width: 980px;
+            margin: 28px auto;
+            padding: 20px;
+        }
+
+        h1 { font-weight: 700; font-size: 1.8rem; margin-bottom: 8px; }
+        p { margin-top: 8px; color: rgba(255,255,255,0.9); }
+        a { color: var(--accent); }
+
+        /* Tabs */
+        .tablist {
+            display: inline-flex;
+            gap: 8px;
+            background: var(--tab-bg);
+            padding: 6px;
+            border-radius: calc(var(--radius) - 2px);
+        }
+        .tab {
+            background: transparent;
+            border: none;
+            padding: 8px 14px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-family: inherit;
+            font-weight: 600;
+            color: rgba(255,255,255,0.95);
+            transition: transform .12s ease, background-color .12s ease;
+        }
+        .tab:hover { transform: translateY(-2px); }
+        .tab:focus { outline: 3px solid rgba(26,115,232,0.18); outline-offset: 2px; }
+        .tab[aria-selected="true"], .tab.active {
+            background: var(--tab-active);
+            box-shadow: 0 6px 18px rgba(0,0,0,0.4);
+            color: var(--fg);
+        }
+
+        .tabpanel { margin-top: 18px; }
+        /* Animate */
+        .tabpanel {
+            overflow: hidden;
+            max-height: 0;
+            opacity: 0;
+            transform: translateY(8px);
+            transition: max-height .36s cubic-bezier(.2,.9,.2,1), opacity .28s ease, transform .28s cubic-bezier(.2,.9,.2,1);
+        }
+        .tabpanel.active {
+            max-height: 800px;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .panel-card {
+            background: var(--panel-bg);
+            padding: 18px;
+            border-radius: var(--radius);
+            box-shadow: 0 6px 14px rgba(0,0,0,0.45);
+        }
+        .panel-card h2 {
+            margin-top: 0;
+            margin-bottom: 8px;
+        }
+        .tabpanel > h2 {
+            padding-top: 18px;
+            margin-top: 0;
+            margin-bottom: 8px;
+        }
+        .hidden { display: none; }
+
+        /* Utility */
+        .stack > * + * { margin-top: var(--gap); }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>E P I L U X</h1>
+
+        <div class="tabs" id="tabs">
+        <div role="tablist" aria-label="Main Tabs" class="tablist">
+            <button role="tab" aria-selected="true" aria-controls="panel-home" id="tab-home" class="tab">Home</button>
+            <button role="tab" aria-selected="false" aria-controls="panel-features" id="tab-features" class="tab">How to use them</button>
+            <button role="tab" aria-selected="false" aria-controls="panel-contact" id="tab-contact" class="tab">How they work</button>
+        </div>
+
+        <div id="panel-home" role="tabpanel" aria-labelledby="tab-home" class="tabpanel active" aria-hidden="false">
+            <h2>About Our Device</h2>
+            <p>We created glasses for photosensitive epilepsy patients.</p>
+            <p>These glasses use specialized LCD Shutter panels to adjust to sudden changes in lighting.</p>
+            
+<p>
+
+
+Around 1 in 4000 people have photosensitive epilepsy (PSE) according to the Epilepsy Foundation, a condition which is triggered sudden changes in light such as a sudden bright light or strobe effect. 
+These sudden changes cause individuals with PSE to start experiencing extreme headaches, nausea, dizziness, and often incapacitating seizures. 
+While there are many available medications, we wanted to create a practical solution that works in conjunction with medications to prevent dangerous triggers. 
+
+
+Glasses that filer out specific wavelengths of light, exist, but they not address dynamic, unpredictable changes.
+Epillux bridges this gap by introducing active, real-time protection. Instead of using static lenses that are unfit for certain indoor environments, our shutter lenses provide a barrier that only activates when a threat is detected. 
+
+
+    
+</p>
+
+
+
+
+
+
+
+
+
+        </div>
+        <div id="panel-features" role="tabpanel" aria-labelledby="tab-features" class="tabpanel" aria-hidden="true">
+            <div class="panel-card">
+                <h2>How to use the glasses</h2>
+                <p>1. Place the glasses comfortably on your face so the lenses fully cover your eyes.</p>
+                <p>2. Power on the glasses.
+                <p>   3. The glasses will automatically adjust to changes in light, activating the LCD shutter panels when a potential trigger is detected.</p>
+                </ul>
+            </div>
+        </div>
+        <div id="panel-contact" role="tabpanel" aria-labelledby="tab-contact" class="tabpanel" aria-hidden="true">
+            <div class="panel-card">
+                <h2>How they work</h2>
+                <p>
+
+
+
+Coded in C++, our camera is linked to our controller via onboard WIFI provided by our ESP32 , the camera feed is formatted and displayed onto a web link, where we create a “mask” by tuning the exposure and brightness extremely low while increasing the contrast. 
+This gives us a black on white mask → the 2 states our program is monitoring. As light changes these pixels that illuminate or dim will change states.
+When the camera detects approximately 2% of its pixels have changed state, the glasses will activate. 
+The camera is placed center of frame, providing with full vision of what the wearer would see, essentially becoming one’s third eye. 
+We decided to choose a camera over other sensors, such as photodiodes and light sensors, because the camera gave us much more freedom and viability. We previously tested photodiodes and light sensors (BH1750), and they all had one main problem: they could not accurately detect changes from afar; an issue that is fixed by the increased visibility of the camera acting as our sensor.
+Additionally, our glasses integrate the features of a normal pair of sunglasses, by dimming automatically in bright environments.
+
+
+
+
+
+
+
+
+
+
+
+                    </p>
+            </div>
+        </div>
+        </div>
+    </div>
+
+    <script>
+    (function(){
+        const tabs = document.querySelectorAll('[role="tab"]');
+        const panels = document.querySelectorAll('[role="tabpanel"]');
+
+        function activateTab(tab){
+            tabs.forEach(t=>{ t.setAttribute('aria-selected','false'); t.classList.remove('active'); });
+            panels.forEach(p=>{ p.classList.remove('active'); p.setAttribute('aria-hidden','true'); });
+            tab.setAttribute('aria-selected','true');
+            tab.classList.add('active');
+            const panel = document.getElementById(tab.getAttribute('aria-controls'));
+            if(panel) {
+                panel.classList.add('active');
+                panel.setAttribute('aria-hidden','false');
+            }
+        }
+
+        tabs.forEach(tab=>{
+            tab.addEventListener('click', ()=> activateTab(tab));
+            tab.addEventListener('keydown', e=>{
+                let index = Array.prototype.indexOf.call(tabs, tab);
+                if(e.key === 'ArrowRight') { index = (index + 1) % tabs.length; tabs[index].focus(); activateTab(tabs[index]); }
+                if(e.key === 'ArrowLeft') { index = (index - 1 + tabs.length) % tabs.length; tabs[index].focus(); activateTab(tabs[index]); }
+            });
+        });
+    })();
+    </script>
+</body>
+
+</html>
