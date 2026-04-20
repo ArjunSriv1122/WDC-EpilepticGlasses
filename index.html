@@ -154,6 +154,45 @@
         #panel-features li:last-child {
             border-bottom: none;
         }
+        .features-media-row {
+            display: flex;
+            align-items: flex-start;
+            justify-content: flex-end;
+            gap: 20px;
+            margin-top: 22px;
+        }
+        .features-image {
+            width: min(100%, 252px);
+            flex: 0 1 252px;
+        }
+        .features-image-caption {
+            max-width: 360px;
+            margin-top: 0;
+            font-size: 0.95rem;
+            color: rgba(255,255,255,0.82);
+            line-height: 1.5;
+        }
+        .contact-prototype-image {
+            width: min(100%, 504px);
+            flex: 1 1 360px;
+            aspect-ratio: 4 / 3;
+            object-fit: cover;
+        }
+        .contact-prototype-image-top-crop {
+            object-position: center bottom;
+        }
+        @media (max-width: 900px) {
+            .features-media-row {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .features-image {
+                width: min(100%, 252px);
+            }
+            .features-image-caption {
+                max-width: 100%;
+            }
+        }
         .video-wrapper {
             margin: 0;
             text-align: center;
@@ -238,6 +277,10 @@
                     <li>When finished using the glasses, remove the frame carefully and set it down on a stable surface, ideally near an outlet.</li>
                     <li>When rested safely, plug in the LiPo battery charger to ensure maximum uptime for next use.</li>
                 </ol>
+                <div class="features-media-row">
+                    <p class="features-image-caption">We recommend using the "Liter Energy Battery Lipo 302025 Battery 3.7V 200mAh 0.74Wh 1S 5C Liter Energy Battery" for our product.</p>
+                    <img class="home-image features-image" src="Screenshot 2026-04-19 231005.png" alt="Recommended LiPo battery option for Epilux glasses.">
+                </div>
             </div>
         </div>
         <div id="panel-contact" role="tabpanel" aria-labelledby="tab-contact" class="tabpanel" aria-hidden="true">
@@ -257,6 +300,11 @@ Additionally, our glasses integrate the features of a normal pair of sunglasses 
 In the future, we plan to implement solar panels along our frame that are routed to our rechargeable LiPo batteries. This would not only serve to greatly extend battery life, but may also serve as the main power source for our glasses if proven to be especially effective.
 This is a practical addition to our glasses due to their functionality as sunglasses. The user would ideally be able to store charge for indoor environments while they are using the glasses in bright outdoor settings, creating a self-sustaining cycle of protection. By utilizing thin-film solar cells on the edges of the frame, the device can passively harvest energy during peak daylight. 
 This reduces the need for  manual charging and guarantees that our glasses remain functional in critical times.</p>
+                <div class="home-image-row">
+                    <img class="home-image contact-prototype-image contact-prototype-image-top-crop" src="IMG_4404 (1).jpeg" alt="Final Epilux prototype image, first view.">
+                    <img class="home-image contact-prototype-image" src="IMG_4405.jpeg" alt="Final Epilux prototype image, second view.">
+                </div>
+                <p class="home-image-caption">These are images of our final prototype.</p>
             </div>
         </div>
         </div>
